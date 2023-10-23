@@ -28,14 +28,14 @@ const Navbar = () => {
                 color: isActive ? "orange" : "black",
                 textDecoration: isActive ? "underline" : "",
             };
-        }}>About</NavLink></li>
+        }}>Add Product</NavLink></li>
         <li><NavLink to="/rating" style={({ isActive }) => {
             return {
                 fontWeight: isActive ? "bold" : "",
                 color: isActive ? "orange" : "black",
                 textDecoration: isActive ? "underline" : "",
             };
-        }}>Rating</NavLink></li>
+        }}>My Cart</NavLink></li>
 
     </>
     return (
@@ -52,7 +52,8 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <button className="btn btn-ghost normal-case text-xl font-bold text-orange-500">Social event</button>
+                    <img className="w-[50px] h-[50px]" src="/transport_10647594.png" alt="" />
+                    <button className="btn btn-ghost normal-case text-xl font-bold text-orange-500">Car brand</button>
 
                 </div>
                 <div className="navbar-center hidden lg:flex">

@@ -1,132 +1,158 @@
-import Swal from "sweetalert2";
+
 
 const AddProduct = () => {
-    const handleAddProduct = event =>{
-        event.preventDefault();
-        const form = event.target;
+    const handleAddProduct = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const brand = e.target.brand.value;
+        const type = e.target.type.value;
+        const price = e.target.price.value;
+        const image = e.target.image.value;
+        const description = e.target.description.value;
+        const rating = e.target.rating.value;
 
-        const name = form.name.value;
-        const brandName = form.brandName.value;
-        const price = form.price.value;
-        const description = form.description.value;
-        const photo = form.photo.value;
-        const rating = form.rating.value;
-        const category = form.category.value;
-        
-        const newProduct ={name,brandName,price,description,photo,rating,category}
+        const addProduct = { name, brand, type, price, image, description, rating }
+        // console.log(data);
 
-        console.log(newProduct);
-
-        //send data to the server
-
-        fetch('http://localhost:5000/product',{
-            method: 'POST',
-            headers: {
-                'content-type':'application/json'
-            },
-            body:JSON.stringify(newProduct)
+        fetch("http://localhost:5000/addProduct", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(addProduct),
         })
-        .then(res=> res.json())
-        .then(data=> {
+          .then((res) => res.json())
+          .then((data) => {
             console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Product added successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                  })
-            }
-        })
-
-
+          });
     }
-    return (
-        <div>
-            <h2>Add Product</h2>
-            <form onSubmit={handleAddProduct}>
-                <div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Product Name</span>
-                        </label>
-                        <label className="input-group">
-
-                            <input type="text" name="name" placeholder="Product name" className="input input-bordered" />
-                        </label>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Brand Name</span>
-                        </label>
-                        <label className="input-group">
-
-                            <input type="text" name="brandName" placeholder="Brand name" className="input input-bordered" />
-                        </label>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Product Price</span>
-                        </label>
-                        <label className="input-group">
-
-                            <input type="text" name="price" placeholder="Product Price" className="input input-bordered" />
-                        </label>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Description</span>
-                        </label>
-                        <label className="input-group">
-
-                            <input type="text" name="description" placeholder="Short description" className="input input-bordered" />
-                        </label>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Product Image URL</span>
-                        </label>
-                        <label className="input-group">
-
-                            <input type="text" name="photo" placeholder="Image URL" className="input input-bordered" />
-                        </label>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Product Rating</span>
-                        </label>
-                        <label className="input-group">
-
-                            <input type="text" name="rating" placeholder="Rate out of 5" className="input input-bordered" />
-                        </label>
-                    </div>
-                    <div className="form-control">
-                    <label className="label">
-                            <span className="label-text">Product Category</span>
-                        </label>
-                        <div className="input-group">
-                            <select className="select select-bordered" name="category">
-                                <option disabled selected>Category</option>
-                                <option>Toyota</option>
-                                <option>Ford</option>
-                                <option>BMW</option>
-                                <option>Mercedes-Benz</option>
-                                <option>Tesla</option>
-                                <option>Honda</option>
-                                
-                            </select>
-                            
-                        </div>
-                    </div>
-
-                  
-                    <input type="submit" value="Add product" className="btn btn-primary" />
-
-
-                </div>
-            </form>
+   
+  return (
+    <div className="max-w-4xl mx-auto bg-white px-4 sm:px-6 lg:px-8">
+      <form onSubmit={handleAddProduct} className="bg-white shadow-md rounded px-8 py-8 sm:py-6 lg:py-10 mb-4">
+        {/* <!-- Name and Brand Name (2 columns on large screens) --> */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              for="name"
+            >
+              Name
+            </label>
+            <input
+              className="w-full py-2 px-3 text-white leading-tight border rounded focus:outline-none focus:shadow-outline"
+              name="name"
+              type="text"
+              placeholder="Product Name"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              for="brand"
+            >
+              Brand Name
+            </label>
+            <input
+              className="w-full py-2 px-3 text-white text-gray-700 leading-tight border rounded focus:outline-none focus:shadow-outline"
+              name="brand"
+              type="text"
+              placeholder="Brand Name"
+            />
+          </div>
         </div>
-    );
+
+        {/* <!-- Type and Price (2 columns on large screens) --> */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              for="type"
+            >
+              Type
+            </label>
+            <input
+              className="w-full py-2 px-3 text-white  leading-tight border rounded focus:outline-none focus:shadow-outline"
+              name="type"
+              type="text"
+              placeholder="Product Type"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              for="price"
+            >
+              Price
+            </label>
+            <input
+              className="w-full py-2 px-3 text-white  leading-tight border rounded focus:outline-none focus:shadow-outline"
+              name="price"
+              type="text"
+              placeholder="Product Price"
+            />
+          </div>
+        </div>
+
+        {/* <!-- Image --> */}
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" for="image">
+            Image
+          </label>
+          <input
+            className="w-full py-2 px-3 text-white  leading-tight border rounded focus:outline-none focus:shadow-outline"
+            name="image"
+            type="text"
+            accept="image/*"
+            placeholder="Upload an image"
+          />
+        </div>
+
+        {/* <!-- Short Description --> */}
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            for="description"
+          >
+            Short Description
+          </label>
+          <textarea
+            className="w-full py-2 px-3 text-white leading-tight border rounded focus:outline-none focus:shadow-outline"
+            name="description"
+            rows="4"
+            placeholder="Short Description"
+          ></textarea>
+        </div>
+
+        {/* <!-- Rating --> */}
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            for="rating"
+          >
+            Rating
+          </label>
+          <input
+            className="w-full py-2 px-3 text-white leading-tight border rounded focus:outline-none focus:shadow-outline"
+            name="rating"
+            type="number"
+            placeholder="Product Rating"
+            min="0"
+            max="5"
+          />
+        </div>
+
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Add Product
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default AddProduct;

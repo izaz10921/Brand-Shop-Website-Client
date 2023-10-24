@@ -13,6 +13,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 
+
 const routes = createBrowserRouter([
 
     {
@@ -40,11 +41,12 @@ const routes = createBrowserRouter([
                 element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
             },
             {
-                path:'/brandDetails/:brandName',
-                element:<PrivateRoute><BrandDetails></BrandDetails></PrivateRoute>,
-                loader: ()=> fetch('http://localhost:5000/product')
+                path:'/:brand',
+                element:<PrivateRoute><BrandDetails></BrandDetails></PrivateRoute>
+                
               
             }
+          
            
 
 

@@ -22,7 +22,7 @@ const Navbar = () => {
                 textDecoration: isActive ? "underline" : "",
             };
         }}>Home</NavLink></li>
-        <li ><NavLink to="/about" style={({ isActive }) => {
+        <li ><NavLink to="/addProduct" style={({ isActive }) => {
             return {
                 fontWeight: isActive ? "bold" : "",
                 color: isActive ? "orange" : "black",

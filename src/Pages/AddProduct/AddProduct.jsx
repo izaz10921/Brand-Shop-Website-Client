@@ -1,15 +1,15 @@
 
 import Swal from "sweetalert2";
 const AddProduct = () => {
-  const handleAddProduct = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const brand = e.target.brand.value;
-    const type = e.target.type.value;
-    const price = e.target.price.value;
-    const image = e.target.image.value;
-    const description = e.target.description.value;
-    const rating = e.target.rating.value;
+  const handleAddProduct = (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const brand = event.target.brand.value;
+    const type = event.target.type.value;
+    const price = event.target.price.value;
+    const image = event.target.image.value;
+    const description = event.target.description.value;
+    const rating = event.target.rating.value;
 
     const addProduct = { name, brand, type, price, image, description, rating }
    
@@ -40,7 +40,7 @@ const AddProduct = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-blue-700 text-sm font-bold mb-2"
 
             >
               Name
@@ -75,14 +75,10 @@ const AddProduct = () => {
 
 
 
-
-
-
-
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-blue-700 text-sm font-bold mb-2"
 
             >
               Type
@@ -96,7 +92,7 @@ const AddProduct = () => {
           </div>
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-blue-700 text-sm font-bold mb-2"
 
             >
               Price
@@ -112,7 +108,7 @@ const AddProduct = () => {
 
        
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" >
+          <label className="block text-blue-700 text-sm font-bold mb-2" >
             Image
           </label>
           <input
@@ -127,7 +123,7 @@ const AddProduct = () => {
         
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-blue-700 text-sm font-bold mb-2"
 
           >
             Short Description
@@ -143,7 +139,7 @@ const AddProduct = () => {
       
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-blue-700 text-sm font-bold mb-2"
 
           >
             Rating

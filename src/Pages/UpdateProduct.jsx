@@ -4,32 +4,24 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 const UpdateProduct = () => {
   const product = useLoaderData();
-  // const { _id } = product;
+ 
   console.log(product);
 
-  const handleUpdateProduct = (e) => {
-    e.preventDefault();
+  const handleUpdateProduct = (event) => {
+    event.preventDefault();
 
-    // Collect values from the form fields
-    const name = e.target.name.value;
-    const brand = e.target.brand.value;
-    const type = e.target.type.value;
-    const price = e.target.price.value;
-    const image = e.target.image.value;
-    const description = e.target.description.value;
-    const rating = e.target.rating.value;
+    
+    const name = event.target.name.value;
+    const brand = event.target.brand.value;
+    const type = event.target.type.value;
+    const price = event.target.price.value;
+    const image = event.target.image.value;
+    const description = event.target.description.value;
+    const rating = event.target.rating.value;
 
-    const updatedProduct = {
-      name,
-      brand,
-      type,
-      price,
-      image,
-      description,
-      rating,
-    };
+    const updatedProduct = {name,brand,type,price,image,description,rating};
     console.log(updatedProduct);
-    // Send a PUT request to update the product
+    
     fetch(`http://localhost:5000/product/${product._id}`, {
       method: "PUT",
       headers: {
@@ -57,7 +49,7 @@ const UpdateProduct = () => {
         onSubmit={handleUpdateProduct}
         className="bg-white shadow-md max-w-4xl mx-auto rounded px-8 py-8 sm:py-6 lg:py-10 mb-4"
       >
-        {/* <!-- Name and Brand Name (2 columns on large screens) --> */}
+      
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="mb-4">
             <label
@@ -90,11 +82,11 @@ const UpdateProduct = () => {
           </div>
         </div>
 
-        {/* <!-- Type and Price (2 columns on large screens) --> */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-blue-700 text-sm font-bold mb-2"
               
             >
               Type
@@ -108,7 +100,7 @@ const UpdateProduct = () => {
           </div>
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-blue-700 text-sm font-bold mb-2"
              
             >
               Price
@@ -122,10 +114,10 @@ const UpdateProduct = () => {
           </div>
         </div>
 
-        {/* <!-- Image --> */}
+        
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-blue-700 text-sm font-bold mb-2"
             
           >
             Image
@@ -139,10 +131,10 @@ const UpdateProduct = () => {
           />
         </div>
 
-        {/* <!-- Short Description --> */}
+       
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-blue-700 text-sm font-bold mb-2"
            
           >
             Short Description
@@ -155,10 +147,10 @@ const UpdateProduct = () => {
           ></textarea>
         </div>
 
-        {/* <!-- Rating --> */}
+        
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-blue-700 text-sm font-bold mb-2"
             
           >
             Rating

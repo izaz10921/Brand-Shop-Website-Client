@@ -1,41 +1,47 @@
 
-
+import Swal from "sweetalert2";
 const AddProduct = () => {
-    const handleAddProduct = (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const brand = e.target.brand.value;
-        const type = e.target.type.value;
-        const price = e.target.price.value;
-        const image = e.target.image.value;
-        const description = e.target.description.value;
-        const rating = e.target.rating.value;
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const brand = e.target.brand.value;
+    const type = e.target.type.value;
+    const price = e.target.price.value;
+    const image = e.target.image.value;
+    const description = e.target.description.value;
+    const rating = e.target.rating.value;
 
-        const addProduct = { name, brand, type, price, image, description, rating }
-        // console.log(data);
-
-        fetch("http://localhost:5000/addProduct", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(addProduct),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
-    }
+    const addProduct = { name, brand, type, price, image, description, rating }
    
+
+    fetch("http://localhost:5000/addProduct", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          title: 'Success!',
+          text: 'New product added',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      });
+  }
+
   return (
-    <div className="max-w-4xl mx-auto bg-white px-4 sm:px-6 lg:px-8">
-      <form onSubmit={handleAddProduct} className="bg-white shadow-md rounded px-8 py-8 sm:py-6 lg:py-10 mb-4">
-        {/* <!-- Name and Brand Name (2 columns on large screens) --> */}
+    <div className=" mx-auto bg-white px-4 pb-28 sm:px-6 lg:px-8">
+      <form onSubmit={handleAddProduct} className="bg-white shadow-md max-w-4xl mx-auto rounded px-8 py-8 sm:py-6 lg:py-10 mb-4">
+ 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              for="name"
+
             >
               Name
             </label>
@@ -46,28 +52,38 @@ const AddProduct = () => {
               placeholder="Product Name"
             />
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              for="brand"
-            >
-              Brand Name
-            </label>
-            <input
-              className="w-full py-2 px-3 text-white text-gray-700 leading-tight border rounded focus:outline-none focus:shadow-outline"
-              name="brand"
-              type="text"
-              placeholder="Brand Name"
-            />
+
+          <div className="form-control mb-4">
+            <div className="input-group">
+            
+              <select className="select select-bordered w-full my-6 py-1 px-3 text-white leading-tight border rounded focus:outline-none focus:shadow-outline " name="brand" type="text">
+                <option disabled selected >Pick a brand</option>
+                <option>Toyota</option>
+                <option>Ford</option>
+                <option>BMW</option>
+                <option>Mercedes-Benz</option>
+                <option>Tesla</option>
+                <option>Honda</option>
+              </select>
+
+            </div>
           </div>
+
         </div>
 
-        {/* <!-- Type and Price (2 columns on large screens) --> */}
+
+
+
+
+
+
+
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              for="type"
+
             >
               Type
             </label>
@@ -81,7 +97,7 @@ const AddProduct = () => {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              for="price"
+
             >
               Price
             </label>
@@ -94,9 +110,9 @@ const AddProduct = () => {
           </div>
         </div>
 
-        {/* <!-- Image --> */}
+       
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" for="image">
+          <label className="block text-gray-700 text-sm font-bold mb-2" >
             Image
           </label>
           <input
@@ -104,15 +120,15 @@ const AddProduct = () => {
             name="image"
             type="text"
             accept="image/*"
-            placeholder="Upload an image"
+            placeholder="Upload image URL"
           />
         </div>
 
-        {/* <!-- Short Description --> */}
+        
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="description"
+
           >
             Short Description
           </label>
@@ -124,11 +140,11 @@ const AddProduct = () => {
           ></textarea>
         </div>
 
-        {/* <!-- Rating --> */}
+      
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="rating"
+
           >
             Rating
           </label>
@@ -144,7 +160,7 @@ const AddProduct = () => {
 
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold mx-auto py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Add Product

@@ -29,7 +29,7 @@ const Navbar = () => {
                 textDecoration: isActive ? "underline" : "",
             };
         }}>Add Product</NavLink></li>
-        <li><NavLink to="/rating" style={({ isActive }) => {
+        <li><NavLink to="/myCart" style={({ isActive }) => {
             return {
                 fontWeight: isActive ? "bold" : "",
                 color: isActive ? "orange" : "black",

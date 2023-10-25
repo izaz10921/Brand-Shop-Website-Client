@@ -72,7 +72,7 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <img className="w-[50px] h-[50px]" src="/transport_10647594.png" alt="" />
+                    <img className="w-[50px] h-[50px]" src="https://i.ibb.co/L9k0LzZ/transport-10647594.png" alt="" />
                     <button className="btn btn-ghost normal-case text-xl font-bold text-orange-500">Car brand</button>
 
                 </div>

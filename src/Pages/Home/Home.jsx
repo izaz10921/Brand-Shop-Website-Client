@@ -12,7 +12,7 @@ const Home = () => {
 
 
     return (
-        <div className="bg-white">
+        <div className="bg-white ">
             <Banner></Banner>
 
             <h3 className="text-center text-black text-2xl font-bold mb-7 mt-7">Brands</h3>

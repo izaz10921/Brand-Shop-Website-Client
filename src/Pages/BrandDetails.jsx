@@ -8,7 +8,7 @@ const BrandDetails = () => {
   const { brand } = useParams();
   const [brands, setBrands] = useState([]);
   const handleClick = () => {
-    fetch(`http://localhost:5000/${brand}`, {
+    fetch(`https://brand-shop-server-ltipm393t-izazs-projects.vercel.app/${brand}`, {
       method: "GET",
     })
       .then((res) => res.json())

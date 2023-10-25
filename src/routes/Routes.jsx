@@ -56,7 +56,7 @@ const routes = createBrowserRouter([
                  <UpdateProduct></UpdateProduct>
                   </PrivateRoute>,
                   loader: ({ params }) =>
-                  fetch(`http://localhost:5000/product/${params.id}`)
+                  fetch(`https://brand-shop-server-ltipm393t-izazs-projects.vercel.app/product/${params.id}`)
                 
                 
               },
@@ -67,7 +67,7 @@ const routes = createBrowserRouter([
                     <ProductDetails></ProductDetails>
                   </PrivateRoute>,
                    loader: ({ params }) =>
-                   fetch(`http://localhost:5000/details/${params.id}`)
+                   fetch(`https://brand-shop-server-ltipm393t-izazs-projects.vercel.app/details/${params.id}`)
                 
                 
               },
